@@ -1,0 +1,14 @@
+{
+  "name": "companion",
+  "version": "1.0.0",
+  "description": "Build Tool for Angular 2+ component libraries",
+  "main": "gulpfile.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+  },
+  "author": "Martin Busley (martin@busley.de)",
+  "license": "MIT"
+}
