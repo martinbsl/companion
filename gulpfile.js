@@ -6,7 +6,7 @@ var del = require('del');
 
 gulp.task('init', function() {
   return gulp.src([
-      'src/gulpfile.js',
+      'src/**/*',
       'package.json',
       'README.md'
   ])
