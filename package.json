@@ -4,11 +4,11 @@
   "description": "Build Tool for Angular 2+ component libraries",
   "main": "gulpfile.js",
   "dependencies": {
+    "gulp": "3.9.1",
+    "run-sequence": "2.1.0"
   },
-  "devDependencies": {
-  },
-  "scripts": {
-  },
+  "devDependencies": {},
+  "scripts": {},
   "author": "Martin Busley (martin@busley.de)",
   "license": "MIT"
 }
