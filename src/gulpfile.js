@@ -7,6 +7,7 @@ var runSequence = require('run-sequence');
 var ngc = require('@angular/compiler-cli/src/main').main;
 var rollup = require('gulp-rollup');
 var sourcemaps = require('gulp-sourcemaps');
+var rename = require('gulp-rename');
 
 /**
  * Cleanup dist-folder
@@ -46,8 +47,9 @@ gulp.task('rollup:fesm', function () {
         entry: 'build/index.js',
         format: 'es'
       }))
-      .pipe(sourcemaps.write())
-      .pipe(gulp.dest('dist'));
+      .pipe(rename('wizard.es5.js'))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest('dist/modules'));
 });
 
 
