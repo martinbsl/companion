@@ -2,8 +2,8 @@
   "name": "companion",
   "version": "1.0.0",
   "description": "Build Tool for Angular 2+ component libraries",
-  "main": "gulpfile.js",
   "dependencies": {
+    "del": "^3.0.0",
     "gulp": "3.9.1",
     "run-sequence": "2.1.0"
   },
