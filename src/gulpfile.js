@@ -24,12 +24,22 @@ gulp.task('copy:readme', function() {
 });
 
 /**
+ * Copies the 'package.json' file.
+ */
+gulp.task('copy:package.json', function() {
+  return gulp.src('package.json').pipe(gulp.dest('dist'));
+});
+
+gulp.task('copy:static-files', ['copy:readme', 'copy:package.json']);
+
+/**
  * NGC-compile sources
  */
 gulp.task('copy:sources', function() {
   return gulp.src([
-    'src/**/*',
-    'node_modules/companion/tsconfig.es5.json'
+      'index.ts',
+      'src/**/*',
+      'node_modules/companion/tsconfig.es5.json'
   ])
   .pipe(gulp.dest('build'));
 });
@@ -54,13 +64,14 @@ gulp.task('rollup:fesm', function () {
 
 
 gulp.task('compile', function () {
-  return runSequence('copy:sources', 'ngc:es5', 'rollup:fesm');
+  //return runSequence('copy:sources', 'ngc:es5', 'rollup:fesm');
+  return runSequence('copy:sources');
 });
 
 /**
  * Build distributable.
  */
-gulp.task('build', ['copy:readme', 'compile']);
+gulp.task('build', ['copy:static-files', 'compile']);
 
 /**
  * Rebuilds component library.

@@ -16,12 +16,19 @@
     "zone.js": "0.8.4"
   },
   "devDependencies": {
+    "chai": "4.1.2",
+    "mocha": "3.5.0",
+    "ncp": "^2.0.0",
+    "path": "^0.12.7",
+    "rimraf": "^2.6.1",
     "typescript": "2.1.5"
   },
   "peerDependencies": {
     "typescript": "^2.1.5"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "mocha"
+  },
   "author": "Martin Busley (martin@busley.de)",
   "license": "MIT",
   "repository": "https://github.com/martinbsl/companion.git"
