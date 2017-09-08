@@ -2,7 +2,6 @@
   "compilerOptions": {
     "declaration": true,
     "module": "es2015",
-    "target": "es5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": [
@@ -14,13 +13,8 @@
     "moduleResolution": "node"
   },
   "angularCompilerOptions": {
-      "strictMetadataEmit": true,
-      "skipTemplateCodegen": true,
-      "flatModuleOutFile": "wizard.es5.js",
-      "flatModuleId": "@nxui/wizard",
-      "annotateForClosureCompiler": true
-    },
-  "files": [
-      "index.ts"
-    ]
+    "strictMetadataEmit": true,
+    "skipTemplateCodegen": true,
+    "annotateForClosureCompiler": true
+  }
 }

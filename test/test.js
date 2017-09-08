@@ -7,7 +7,7 @@ const promisify = require('util').promisify;
 const rimraf = promisify(require('rimraf'));
 
 
-const TEST_DIR = 'test/library';
+const TEST_DIR = 'test/hello-world';
 const COMPANION_INSTALL_DIR = 'companion';
 
 before(async function () {
@@ -19,23 +19,41 @@ before(async function () {
     ncp(path.join('.', 'src'), path.join(TEST_DIR, 'node_modules', COMPANION_INSTALL_DIR));
 });
 
-describe('Static Files', function() {
+describe('Library Content', function() {
 
     before(async function () {
         this.timeout(30000);
-        
+
         await rimraf(`${TEST_DIR}/dist`);
-        await runCompanion();
+        await rimraf(`${TEST_DIR}/build`);
+
+        return runCompanion();
     });
 
-    it('should copy README.md', function() {
-        expectExists('README.md');
+    describe('Static Files', function() {
+
+        it('should copy README.md', function() {
+            expectExists('README.md');
+        });
+
+        it('should copy package.json', function() {
+            expectExists('package.json');
+        });
     });
 
-    it('should copy package.json', function() {
-        expectExists('package.json');
+    describe('Entry Points', function() {
+
+        it('should create primary entry point named as library folder', function() {
+            expectExists('hello-world.d.ts');
+            expectExists('public_api.d.ts');
+        });
+
+        it('should create primary entry point meta-data', function() {
+            expectExists('hello-world.metadata.json');
+        });
     });
 });
+
 
 function expectExists(filename) {
     expect(fs.existsSync(`${TEST_DIR}/dist/${filename}`, `${filename} exists`)).to.be.true;
