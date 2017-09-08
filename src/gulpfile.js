@@ -1,13 +1,16 @@
 /*
  * Companion main build-file.
  */
-var gulp = require('gulp');
-var del = require('del');
-var runSequence = require('run-sequence');
-var ngc = require('@angular/compiler-cli/src/main').main;
-var rollup = require('gulp-rollup');
-var sourcemaps = require('gulp-sourcemaps');
-var rename = require('gulp-rename');
+const gulp = require('gulp');
+const del = require('del');
+const runSequence = require('run-sequence');
+const ngc = require('@angular/compiler-cli/src/main').main;
+const rollup = require('gulp-rollup');
+const sourcemaps = require('gulp-sourcemaps');
+const rename = require('gulp-rename');
+
+
+require('./gulp/copy-static-files');
 
 /**
  * Cleanup dist-folder
@@ -15,22 +18,6 @@ var rename = require('gulp-rename');
 gulp.task('clean', function() {
   return del(['dist, build']);
 });
-
-/**
- * Copies the 'README.md' file.
- */
-gulp.task('copy:readme', function() {
-  return gulp.src('README.md').pipe(gulp.dest('dist'));
-});
-
-/**
- * Copies the 'package.json' file.
- */
-gulp.task('copy:package.json', function() {
-  return gulp.src('package.json').pipe(gulp.dest('dist'));
-});
-
-gulp.task('copy:static-files', ['copy:readme', 'copy:package.json']);
 
 /**
  * NGC-compile sources
